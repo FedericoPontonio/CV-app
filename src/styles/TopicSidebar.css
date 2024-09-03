@@ -1,0 +1,17 @@
+.TopicSidebar{
+    margin: 20px;
+    border: solid rgb(163, 161, 161) 1px;
+    background-color: rgb(51, 51, 64);
+    color: rgb(219, 233, 246);
+    display: grid;
+    font-size: 30px;
+}
+
+.listSidebar {
+    display: grid;
+    gap: 10px;
+}
+h2 {
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,41 @@
+.UserPanel {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    border: solid rgb(105, 84, 84) 1px;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+.EditArea>div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    margin: 20px;
+}
+
+.dropdownTabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: solid rgb(13, 13, 13, 0.2) 2px ;
+    border-radius: 10px;
+    margin: 20px;
+    justify-items: center;
+
+}
+.dropdownHeader{
+    opacity: 1;
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgb(160, 189, 239, 0.2);
+    margin: 10px;
+}
+.dropdownHeader:hover{
+    background-color: rgb(160, 189, 239);
+}
+.dropdownHeader>svg:hover {
+    background-color: rgb(143, 167, 210, 0.4);
+    border-radius: 50px;
+}
