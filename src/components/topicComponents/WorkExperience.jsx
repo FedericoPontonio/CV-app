@@ -4,12 +4,31 @@ import { updateStoredData, WorkExperienceConstructor } from "../../data.js";
 import AddExperience from "../AddExperienceWork-Edu.jsx";
 import { useState } from "react";
 
+
+
+
+export default function WorkExperience() {
+    const [workExperiencesRendered, setWorkExperiencesRendered] = useState(populateTopicFromData());
+    function handleAddExperience() {
+        //add new data
+        const tempDataRoot= JSON.parse(localStorage.getItem('CVDataJson'));
+        const addElementToWorkExperienceProperty= [...JSON.parse(localStorage.getItem('CVDataJson')).workExperiences, WorkExperienceConstructor()];
+        tempDataRoot.workExperiences = addElementToWorkExperienceProperty
+        updateStoredData(tempDataRoot);
+
+        //instantiate component
+        setWorkExperiencesRendered(populateTopicFromData());
+    };
+    function triggerRerenderOnRemoveButton() {
+        setWorkExperiencesRendered(populateTopicFromData())
+    }
     //render default data
-    function populateTopicFromData(data=JSON.parse(localStorage.getItem('CVDataJson'))) {
+    function populateTopicFromData(data=JSON.parse(localStorage.getItem('CVDataJson')).workExperiences) {
         const tempArray=[];
         for (let i = 0; i<data.length; i++) {
             tempArray.push(
                 <DropdownMenu topic='Work experience' 
+                triggerRerenderOnRemoveButton={triggerRerenderOnRemoveButton}
                 roleInputDefaultValue={data[i].role} 
                 companyInputDefaultValue={data[i].company} 
                 cityInputDefaultValue={data[i].city}
@@ -21,16 +40,6 @@ import { useState } from "react";
             );
         }
         return tempArray
-    };
-
-
-export default function WorkExperience() {
-    const [workExperiencesRendered, setWorkExperiencesRendered] = useState(populateTopicFromData());
-    function handleAddExperience() {
-        //add new data
-        updateStoredData([...JSON.parse(localStorage.getItem('CVDataJson')), WorkExperienceConstructor()]);
-        //instantiate component
-        setWorkExperiencesRendered(populateTopicFromData());
     };
 
     return (

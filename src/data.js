@@ -94,13 +94,14 @@ export const education = [
     }
 ];
 
-export function EducationConstructor(degree, title, school, city, startDate, endDate, key=crypto.randomUUID()) {
+export function EducationConstructor(degree='Degree', title='Title acquired', school='School name', city='Location', startDate='Start Date', endDate='End Date', key=crypto.randomUUID()) {
     return {degree, title, school, city, startDate, endDate, key}
 };
 
 //initialize dummy experiences if none is present.
-(function initializeData() {
+// updateStoredData(dataRoot);
+(function initializeData() {//modificare
     if (JSON.parse(localStorage.getItem('CVDataJson')).length <1) {
-        updateStoredData(workExperiences);
+        updateStoredData(dataRoot);
     }
 }) ();
