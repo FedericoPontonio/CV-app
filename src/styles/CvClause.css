@@ -1,0 +1,14 @@
+.CvClause {
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+}
+.CvClause>label {
+    font-size: 25px;
+    font-weight: 700;
+}
+.CvClause>textarea {
+    margin-top: 50px;
+    font-size: larger;
+    font-family: sans-serif;
+}

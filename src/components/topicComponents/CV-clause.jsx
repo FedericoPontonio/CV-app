@@ -1,9 +1,22 @@
-import FormInput from "./FormInput"
+import "../../styles/CvClause.css";
+import { updateStoredData } from "../../data";
 
 export default function CvClause() {
+    const dataRoot = JSON.parse(localStorage.getItem('CVDataJson'));
+    function handleChanges(value) {
+        dataRoot.cvClause = value;
+        updateStoredData(dataRoot);
+    }
     return (
     <div className="CvClause">
-            <FormInput fieldID='cvClause' fieldCaption='CV Clause' type='text' placeholder="I hereby give consent for my personal data included in my application to be processed for the purposes of the recruitment process under the European Parliament's and Council of the European Union Regulation on the Protection of Natural Persons as of 27 April 2016, with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC." />
+        <label htmlFor='cvClause'>CV Clause:</label>
+        <textarea id="cvClause"
+        name="cvClause"
+        rows={10}
+        cols={40}
+        defaultValue={dataRoot.cvClause}
+        onChange={(e)=>{handleChanges(e.target.value)}}>
+        </textarea>
     </div>
     )
 }

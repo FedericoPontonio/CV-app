@@ -1,6 +1,30 @@
-.app{
+:root {
   background-color: aliceblue;
+
+}
+.app{
   display: grid;
   grid-template-columns: 3fr 2fr;
   font-family: sans-serif;
+  overflow: hidden;
+
+}
+
+@media print {
+  body {
+    visibility: hidden;
+  }
+  .PreviewPanel {
+    visibility: visible;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: none, none;
+
+  }
+  :root{
+    background-color: white;
+  }
 }

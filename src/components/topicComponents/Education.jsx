@@ -1,11 +1,10 @@
 import { DropdownMenu } from "./DropdownMenu.jsx"
-import '../../styles/UserPanel.css'
 import { updateStoredData, EducationConstructor } from "../../data.js";
 import AddExperience from "../AddExperienceWork-Edu.jsx";
 import { useState } from "react";
 
 
-export default function Education() {
+export default function Education({updatePreviewState}) {
     const [educationExperiencesRendered, setEducationExperienceRendered] = useState(populateTopicFromData());
     function handleAddExperience() {
         //add new data
@@ -16,6 +15,7 @@ export default function Education() {
 
         //instantiate component
         setEducationExperienceRendered(populateTopicFromData());
+        updatePreviewState();
     };
     function triggerRerenderOnRemoveButton() {//duplication in Education.jsx
         setEducationExperienceRendered(populateTopicFromData())
@@ -34,7 +34,8 @@ export default function Education() {
                 endDateInputDefaultValue={data[i].endDate}
                 titleInputDefaultValue={data[i].title}
                 defaultStateHeader={data[i]}
-                key={data[i].key}/>
+                key={data[i].key}
+                updatePreviewState={updatePreviewState}/>
             );
         }
         return tempArray
@@ -44,7 +45,9 @@ export default function Education() {
         <div className="Education">
             <h2>Education</h2>
             {educationExperiencesRendered}
-            <AddExperience handleAddExperience={handleAddExperience}>
+            <AddExperience 
+                handleAddExperience={handleAddExperience}
+            >
             </AddExperience>
         </div>
     )

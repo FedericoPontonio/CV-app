@@ -6,7 +6,7 @@ const collapseIcon = <svg width="30px" height="64px" viewBox="0 0 24 24" xmlns="
 const expandIcon =   <svg width="30px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier"></g><g id="SVGRepo_tracerCarrier"></g><g id="SVGRepo_iconCarrier"> <path d="M14 10L21 3M21 3H16.5M21 3V7.5M10 14L3 21M3 21H7.5M3 21L3 16.5" stroke="#000000" ></path> </g></svg>
 
 
-export function DropdownMenu({topic, dataKey, triggerRerenderOnRemoveButton, schoolInputDefaultValue, titleInputDefaultValue, degreeInputDefaultValue, roleInputDefaultValue, companyInputDefaultValue, cityInputDefaultValue, stardDateInputDefaultValue, endDateInputDefaultValue, descriptionInputDefaultValue, defaultStateHeader}) {
+export function DropdownMenu({updatePreviewState, topic, dataKey, triggerRerenderOnRemoveButton, schoolInputDefaultValue, titleInputDefaultValue, degreeInputDefaultValue, roleInputDefaultValue, companyInputDefaultValue, cityInputDefaultValue, stardDateInputDefaultValue, endDateInputDefaultValue, descriptionInputDefaultValue, defaultStateHeader}) {
     const [activeIcon, setActiveIcon] =useState(expandIcon);
     const [isFormExpanded, setIsFormExpanded] = useState(false);
     const [workplace, setHeaderText] = useState(defaultStateHeader.company);
@@ -30,8 +30,7 @@ export function DropdownMenu({topic, dataKey, triggerRerenderOnRemoveButton, sch
         setIsFormExpanded(!isFormExpanded)
     };
 
-    function handleInputChanges(fieldID, value
-    ) {
+    function handleInputChanges(fieldID, value) {
         //header changes
         switch (fieldID) {
             case 'company':
@@ -60,7 +59,6 @@ export function DropdownMenu({topic, dataKey, triggerRerenderOnRemoveButton, sch
             for (let i = 0; i < data.length; i++) {
                 if (data[i].key === defaultStateHeader.key) { // Assuming each item has a unique 'key'
                     data[i][fieldID] = value;  // Update the specific field
-                    console.log(data)
                     break;
                 }
             }
@@ -87,6 +85,7 @@ export function DropdownMenu({topic, dataKey, triggerRerenderOnRemoveButton, sch
                 }) ();
                 break;
         }
+        updatePreviewState();
     };
 
 
@@ -99,9 +98,10 @@ export function DropdownMenu({topic, dataKey, triggerRerenderOnRemoveButton, sch
                     {activeIcon}
                     <p>{role}{', '} {startDate} {'/'} {endDate}</p>
                     <RemoveExperience 
-                    dataKey={defaultStateHeader.key}
-                    topic={topic}
-                    triggerRerenderOnRemoveButton={triggerRerenderOnRemoveButton}
+                        dataKey={defaultStateHeader.key}
+                        topic={topic}
+                        triggerRerenderOnRemoveButton={triggerRerenderOnRemoveButton}
+                        updatePreviewState={updatePreviewState}
                     ></RemoveExperience>
                 </div>
                 {isFormExpanded && 
@@ -127,7 +127,8 @@ export function DropdownMenu({topic, dataKey, triggerRerenderOnRemoveButton, sch
                 <RemoveExperience
                     dataKey={defaultStateHeader.key}
                     topic={topic}
-                    triggerRerenderOnRemoveButton={triggerRerenderOnRemoveButton}>
+                    triggerRerenderOnRemoveButton={triggerRerenderOnRemoveButton}
+                    updatePreviewState={updatePreviewState}>
                 </RemoveExperience>
             </div>
             {isFormExpanded && 

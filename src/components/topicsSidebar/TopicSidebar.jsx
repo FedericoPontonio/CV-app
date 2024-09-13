@@ -2,19 +2,19 @@ import SidebarListElement from './SidebarListElement.jsx'
 import '../../styles/TopicSidebar.css'
 
 
-export default function TopicSidebar({ setActiveTopic }) {
+export default function TopicSidebar({ setActiveTopic, addStyleToActiveLi }) {
     return (
         <div className='TopicSidebar'>
             <h2>Edit Panel</h2>
             <ul className='listSidebar'>
-                <SidebarListElement text='Contacts' setActiveTopic={setActiveTopic} />
-                <SidebarListElement text='Work experience' setActiveTopic={setActiveTopic} />
-                <SidebarListElement text='Education' setActiveTopic={setActiveTopic} />
-                <SidebarListElement text='Soft skills' setActiveTopic={setActiveTopic} />
-                <SidebarListElement text='Languages' setActiveTopic={setActiveTopic} />
-                <SidebarListElement text='Hobbies' setActiveTopic={setActiveTopic} />
-                <SidebarListElement text='Cv Clause' setActiveTopic={setActiveTopic} />
-                <SidebarListElement text='Download CV' setActiveTopic={setActiveTopic} />
+                <SidebarListElement text='Contacts' setActiveTopic={setActiveTopic} addStyleToActiveLi={addStyleToActiveLi} />
+                <SidebarListElement text='Work experience' setActiveTopic={setActiveTopic} addStyleToActiveLi={addStyleToActiveLi} />
+                <SidebarListElement text='Education' setActiveTopic={setActiveTopic} addStyleToActiveLi={addStyleToActiveLi} />
+                <SidebarListElement text='Skills' setActiveTopic={setActiveTopic} addStyleToActiveLi={addStyleToActiveLi}/>
+                <SidebarListElement text='Languages' setActiveTopic={setActiveTopic} addStyleToActiveLi={addStyleToActiveLi} />
+                <SidebarListElement text='Hobbies' setActiveTopic={setActiveTopic} addStyleToActiveLi={addStyleToActiveLi} />
+                <SidebarListElement text='Cv Clause' setActiveTopic={setActiveTopic} addStyleToActiveLi={addStyleToActiveLi} />
+                <SidebarListElement text='Download CV' setActiveTopic={setActiveTopic} addStyleToActiveLi={addStyleToActiveLi} />
             </ul>
         </div>
     )

@@ -1,5 +1,4 @@
 import { DropdownMenu } from "./DropdownMenu.jsx"
-import '../../styles/UserPanel.css'
 import { updateStoredData, WorkExperienceConstructor } from "../../data.js";
 import AddExperience from "../AddExperienceWork-Edu.jsx";
 import { useState } from "react";
@@ -7,7 +6,7 @@ import { useState } from "react";
 
 
 
-export default function WorkExperience() {
+export default function WorkExperience({updatePreviewState}) {
     const [workExperiencesRendered, setWorkExperiencesRendered] = useState(populateTopicFromData());
     function handleAddExperience() {
         //add new data
@@ -18,8 +17,9 @@ export default function WorkExperience() {
 
         //instantiate component
         setWorkExperiencesRendered(populateTopicFromData());
+        updatePreviewState();
     };
-    function triggerRerenderOnRemoveButton() {
+    function triggerRerenderOnRemoveButton() {//duplication in Education.jsx
         setWorkExperiencesRendered(populateTopicFromData())
     }
     //render default data
@@ -36,7 +36,8 @@ export default function WorkExperience() {
                 endDateInputDefaultValue={data[i].endDate}
                 descriptionInputDefaultValue={data[i].description}
                 defaultStateHeader={data[i]}
-                key={data[i].key}/>
+                key={data[i].key}
+                updatePreviewState={updatePreviewState}/>
             );
         }
         return tempArray
@@ -46,7 +47,9 @@ export default function WorkExperience() {
         <div className="WorkExperience">
             <h2>Work Experience</h2>
             {workExperiencesRendered }
-            <AddExperience handleAddExperience={handleAddExperience}>
+            <AddExperience 
+                handleAddExperience={handleAddExperience}
+            >
             </AddExperience>
         </div>
     )

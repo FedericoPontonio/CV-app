@@ -1,0 +1,11 @@
+.ContactInformations {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    justify-items: center;
+}
+.ContactInformations>:first-child {
+    grid-row: 3/4;
+    grid-column: 1/-1;
+    min-width: 30vw;
+}

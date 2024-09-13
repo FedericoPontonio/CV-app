@@ -1,15 +1,24 @@
-import FormInput from "./FormInput"
+import FormInput from "./FormInput";
+import {updateStoredData} from "../../data.js"
+import "../../styles/ContactInformation.css"
 
-export default function ContactInformations() {
+export default function ContactInformations({updatePreviewState}) {
+    const dataRoot= JSON.parse(localStorage.getItem('CVDataJson'));
+    const contactData= dataRoot.contacts;
+    function handleInputChanges(fieldID, value) {
+        dataRoot.contacts[fieldID] = value;
+        updateStoredData(dataRoot)
+        updatePreviewState()
+    }
     return (
     <div className="ContactInformations">
-            <FormInput fieldID='fName' fieldCaption='First Name' type='text' placeholder='poro' />
-            <FormInput fieldID='lname' fieldCaption='Last Name' type='text' placeholder='Bignardi' />
-            <FormInput fieldID='professionalRole' fieldCaption='Professional Role' type='text' placeholder='Web Developer' />
-            <FormInput fieldID='address' fieldCaption='Address' type='text' placeholder='132, My Street, Kingston, New York 12401.' />
-            <FormInput fieldID='email' fieldCaption='E-mail' type='email' placeholder='exemple@gmail.com' />
-            <FormInput fieldID='linkedin' fieldCaption='Linkedin' type='text' placeholder='https://www.linkedin.com' />
-            <FormInput fieldID='phoneNumber' fieldCaption='Phone Number' type='tel' placeholder='334 533 1133' />
+            <FormInput fieldID='address' fieldCaption='Address' type='text' value={contactData.address} handleInputChanges={handleInputChanges} />
+            <FormInput fieldID='fName' fieldCaption='First Name' type='text' value={contactData.fName} handleInputChanges={handleInputChanges} />
+            <FormInput fieldID='lName' fieldCaption='Last Name' type='text' value={contactData.lName} handleInputChanges={handleInputChanges} />
+            <FormInput fieldID='email' fieldCaption='E-mail' type='email' value={contactData.email} handleInputChanges={handleInputChanges} />
+            <FormInput fieldID='phoneNumber' fieldCaption='Phone Number' type='tel' value={contactData.phoneNumber} handleInputChanges={handleInputChanges} />
+            <FormInput fieldID='professionalRole' fieldCaption='Professional Role' type='text' value={contactData.professionalRole} handleInputChanges={handleInputChanges} />
+            <FormInput fieldID='linkedin' fieldCaption='Linkedin' type='text' value={contactData.linkedin} handleInputChanges={handleInputChanges} />
     </div>
     )
 };

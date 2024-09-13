@@ -1,0 +1,39 @@
+.dropdownTabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: solid rgb(13, 13, 13, 0.2) 2px ;
+    border-radius: 10px;
+    margin: 20px;
+    justify-items: center;
+
+}
+.dropdownHeader{
+    opacity: 1;
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgb(160, 189, 239, 0.2);
+    margin: 10px;
+}
+.dropdownHeader>button{
+    width: 60px;
+    height: 65px;
+    border-radius: 30px;
+}
+.dropdownHeader>button:hover {
+    background-color: rgb(245, 161, 161);
+}
+.dropdownHeader:hover{
+    background-color: rgb(160, 189, 239);
+}
+.dropdownHeader>svg:hover {
+    background-color: rgb(143, 167, 210, 0.4);
+    border-radius: 50px;
+}
+
+.Education,.WorkExperience {
+    max-height: 900px;
+    overflow: scroll;
+}
