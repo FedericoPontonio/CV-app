@@ -155,8 +155,9 @@ export function EducationConstructor(degree='Degree', title='Title acquired', sc
 
 //initialize dummy experiences if none is present.
 // updateStoredData(dataRoot);
-// (function initializeData() {//modificare
-//     if (JSON.parse(localStorage.getItem('CVDataJson')).length <1) {
-//         updateStoredData(dataRoot);
-//     }
-// }) ();
+// localStorage.removeItem('CVDataJson');
+(function initializeData() {//modificare
+    if (JSON.parse(localStorage.getItem('CVDataJson'))==null) {
+        updateStoredData(dataRoot);
+    }
+}) ();
