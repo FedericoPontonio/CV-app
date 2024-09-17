@@ -1,4 +1,3 @@
-import CvClause from "./components/topicComponents/CV-clause";
 
 export function updateStoredData(data) {
     localStorage.setItem('CVDataJson', JSON.stringify(data));
@@ -122,42 +121,14 @@ export function EducationConstructor(degree='Degree', title='Title acquired', sc
     return {degree, title, school, city, startDate, endDate, key}
 };
 
-// export function () {
-
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //initialize dummy experiences if none is present.
-// updateStoredData(dataRoot);
-// localStorage.removeItem('CVDataJson');
+
 (function initializeData() {//modificare
     if (JSON.parse(localStorage.getItem('CVDataJson'))==null) {
         updateStoredData(dataRoot);
     }
 }) ();
+
+// updateStoredData(dataRoot);
+// localStorage.removeItem('CVDataJson');

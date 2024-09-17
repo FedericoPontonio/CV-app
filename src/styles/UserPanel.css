@@ -1,11 +1,13 @@
 .UserPanel {
-    display: grid;
+    display: flex;
     grid-template-columns: 1fr 2fr;
     border: solid rgb(105, 84, 84) 1px;
     border-radius: 20px;
     margin: 20px;
     margin-top: 0px;
     height: 94vh;
+    overflow-x: auto; /* Hide horizontal overflow */
+    overflow-y: auto;   /* Allow vertical scrolling if needed */
 }
 
 .Skills,.Languages,.Hobbies{
