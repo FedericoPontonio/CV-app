@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     margin: 30px;
+    align-items: center;
+    transform: translateX(10%);
 }
 .CvClause>label {
     font-size: 25px;
@@ -9,6 +11,13 @@
 }
 .CvClause>textarea {
     margin-top: 50px;
-    font-size: larger;
+    font-size: 15px;
+    padding: 15px;
     font-family: sans-serif;
+}
+.CvClause>img {
+    width: 50%;
+    max-width: 400px;
+    border-radius: 10%;
+    margin: 10%;
 }

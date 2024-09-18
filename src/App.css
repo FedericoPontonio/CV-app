@@ -33,9 +33,9 @@
     flex-direction: column;
   }
   .topicSidebarVisible{
-  width: 100vw;
-  transition: width 1s, opacity 1s;
-  opacity: 1;
+    width: 100vw;
+    transition: width 1s, opacity 1s;
+    opacity: 1;
   }
   .topicSidebarHidden{
   width: 0px;
@@ -43,6 +43,9 @@
   opacity: 0;
   pointer-events: none;
   }
+  .UserPanel>div:last-child{
+    transform: translateX(-20px);
+}
 }
 @media (min-width: 821px) {
   .topicSidebarVisible{

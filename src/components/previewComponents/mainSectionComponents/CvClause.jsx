@@ -1,6 +1,6 @@
 export default function CvClause({state}) {
     return (
-        <div className="CvClause">
+        <div className="CvClausePreview">
             {state.cvClause}
         </div>
     )

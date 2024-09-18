@@ -6,10 +6,12 @@
     border: solid rgb(149, 146, 146, 0.4) 2px;
     border-radius: 10px;
     padding: 10px;
+    height: min-content;
+    /* max-width: 150px;  why did I write this in the first place??*/
 }
 input {
     border: solid rgb(92, 155, 232, 0.5) 1px;
-    max-width: 10vw;
+    max-width: 80%;
 }
 input:hover {
     border: solid rgb(92, 155, 232) 1px;

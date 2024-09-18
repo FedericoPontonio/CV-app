@@ -4,6 +4,12 @@
     align-items: stretch;
 }
 
+@media (max-width: 400px) {
+    .singleRowComponent>.FormInput{
+        max-width: 150px;
+    }
+}
+
 .singleRowComponent>button{
     width: 60px;
     height: 65px;
@@ -11,4 +17,12 @@
 }
 .singleRowComponent>button:hover {
     background-color: rgb(245, 161, 161);
+}
+
+.Skills>img, .Hobbies>img, .Languages>img{
+    width: 50%;
+    max-width: 400px;
+    border-radius: 10%;
+    margin: 10%;
+    transform: translateX(50%);
 }

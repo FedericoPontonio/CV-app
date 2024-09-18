@@ -5,7 +5,33 @@
     border-radius: 10px;
     margin: 20px;
     justify-items: center;
+}
+/* animations for the dropdownTabs expantion/collapse */
+ @keyframes expand {
+    0% {
+        transform: scaleY(0);
+        opacity: 0;
+      }
+    
+    70% {
+        transform: scaleY(1.1);
+        opacity: 1;
+      }
+      
+    100% {
+        transform: scaleY(1);
+      }
+}
+@keyframes collapse {
+    0% {
+        transform: scaleY(1);
+        opacity: 1;
+      }
 
+    100% {
+        transform: scaleY(0);
+        opacity: 0;
+      }
 }
 .dropdownHeader{
     opacity: 1;
@@ -36,4 +62,25 @@
 .Education,.WorkExperience {
     max-height: 900px;
     overflow: scroll;
+    width: 100%;
 }
+.Education>img,.WorkExperience>img{
+    width: 50%;
+    max-width: 400px;
+    border-radius: 10%;
+    margin-top: 5%;
+    transform: translateX(50%);
+}
+
+@media (max-width: 820px) {
+
+    .dropdownTabs{
+      grid-template-columns: 1fr;
+      align-items: center;
+      justify-items: center;
+      width: 87%;
+    }
+    .dropdownTabs>div{
+        width: 80%;
+    }
+  }

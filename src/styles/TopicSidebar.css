@@ -11,9 +11,12 @@
 
 #collapseTopicsidebar{
     position: absolute;
-    top: 4%;
-    left: 3.2%;
+    top: 2%;
+    left: 30px;
     background-color: rgb(211, 204, 243);
+    display: flex;
+    width: 44px;
+    border-radius: 10px;
 }
 #collapseTopicsidebar:hover{
     background-color: rgb(227, 226, 231);
@@ -35,9 +38,4 @@ h2 {
     margin-left: 8%;
     height: max-content;
     pointer-events: none;
-}
-
-#collapseTopicsidebar{
-    display: flex;
-    width: 44px;
 }

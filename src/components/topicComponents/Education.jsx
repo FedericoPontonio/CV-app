@@ -43,7 +43,7 @@ export default function Education({updatePreviewState}) {
 
     return (
         <div className="Education">
-            <h2>Education</h2>
+            <img src="../../../images/education.jpg" alt="education"></img>
             {educationExperiencesRendered}
             <AddExperience 
                 handleAddExperience={handleAddExperience}

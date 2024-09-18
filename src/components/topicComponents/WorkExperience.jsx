@@ -45,7 +45,7 @@ export default function WorkExperience({updatePreviewState}) {
 
     return (
         <div className="WorkExperience">
-            <h2>Work Experience</h2>
+            <img src="../../../images/workExp.jpg" alt="work experiences"></img>
             {workExperiencesRendered }
             <AddExperience 
                 handleAddExperience={handleAddExperience}

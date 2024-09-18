@@ -72,7 +72,9 @@
     border-bottom: solid 2px rgba(123, 120, 120, 0.3);
     font-size: 18px;
 }
-.CvClause {
+.CvClausePreview {
     font-size: 8px;
     justify-content: end;
+    margin-left: 20px;
+    margin-right: 20px;
 }

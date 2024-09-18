@@ -5,7 +5,7 @@ export default function Hobbies({updatePreviewState}) {
 
     return(
         <div className='Hobbies'>
-            <h2>Hobbies</h2>
+            <img src='../../../images/hobbies.jpg' alt='hobbies'></img>
             <SingleRowComponent updatePreviewState={updatePreviewState} topic={'Hobbies'}/>
             {/* <AddSkill handleAddExperience={''}/> */}
         </div>

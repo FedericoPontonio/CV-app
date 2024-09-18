@@ -9,6 +9,7 @@ const expandIcon =   <svg width="30px" height="64px" viewBox="0 0 24 24" fill="n
 export function DropdownMenu({updatePreviewState, topic, dataKey, triggerRerenderOnRemoveButton, schoolInputDefaultValue, titleInputDefaultValue, degreeInputDefaultValue, roleInputDefaultValue, companyInputDefaultValue, cityInputDefaultValue, stardDateInputDefaultValue, endDateInputDefaultValue, descriptionInputDefaultValue, defaultStateHeader}) {
     const [activeIcon, setActiveIcon] =useState(expandIcon);
     const [isFormExpanded, setIsFormExpanded] = useState(false);
+    const [displayStyle, setDisplayStyle] = useState({ display: 'none' });
     const [workplace, setHeaderText] = useState(defaultStateHeader.company);
     const [role, setRoleText] = useState(defaultStateHeader.role);
     const [startDate, setStartDateText] = useState(defaultStateHeader.startDate);
@@ -19,13 +20,19 @@ export function DropdownMenu({updatePreviewState, topic, dataKey, triggerRerende
     const [degree, setDegree] = useState(defaultStateHeader.degree);
 
     function expandCollapseForm() {
-        if(activeIcon === expandIcon) {
-            setActiveIcon(collapseIcon)
+        if(isFormExpanded) {
+            setActiveIcon(expandIcon);
+            setDisplayStyle({ animation: 'collapse 500ms ease-in-out forwards', transformOrigin: 'top', });
+            //sets the display property with the delay corrisponding to the animation duration
+            setTimeout(() => {
+                setDisplayStyle({ display: 'none' });
+            }, 500);
             //semantically bad nomenclature, but I only use it here outside of the actual purpose of this function so for now it's fine.
             triggerRerenderOnRemoveButton()
         }
         else {
-            setActiveIcon(expandIcon)
+            setActiveIcon(collapseIcon);
+            setDisplayStyle({ animation: 'expand 500ms ease-in-out forwards', transformOrigin: 'top', });
         }
         setIsFormExpanded(!isFormExpanded)
     };
@@ -88,8 +95,16 @@ export function DropdownMenu({updatePreviewState, topic, dataKey, triggerRerende
         updatePreviewState();
     };
 
-
     if(topic === 'Work experience') {
+        // invece di dichiarare il div se isFormExpanded===true, posso dichiararlo prima e cambiare solo le proprietà css per nasconderlo e mostrarlo
+        const workExperiencesDropdownTabs= <div className={'dropdownTabs'} style={displayStyle} key={dataKey}  >
+            <FormInput fieldID='role' fieldCaption='Role' type='text' placeholder={'Role'} handleInputChanges={handleInputChanges} value={roleInputDefaultValue} />
+            <FormInput fieldID='company' fieldCaption='Company' type='text' placeholder='Company/Employer' handleInputChanges={handleInputChanges} value={companyInputDefaultValue} />
+            <FormInput fieldID='city' fieldCaption='City' type='text' placeholder='Location' handleInputChanges={handleInputChanges} value={cityInputDefaultValue} />
+            <FormInput fieldID='startDate' fieldCaption='Start Date' type='text' placeholder='Start Date' handleInputChanges={handleInputChanges} value={stardDateInputDefaultValue} />
+            <FormInput fieldID='endDate' fieldCaption='End Date' type='text' placeholder='End Date' handleInputChanges={handleInputChanges} value={endDateInputDefaultValue} />
+            <FormInput fieldID='description' fieldCaption='Description' type='text' handleInputChanges={handleInputChanges} placeholder="A brief description of your responsability" value={descriptionInputDefaultValue} />
+        </div>
         
         return (
             <div className="DropdownMenu">
@@ -104,20 +119,20 @@ export function DropdownMenu({updatePreviewState, topic, dataKey, triggerRerende
                         updatePreviewState={updatePreviewState}
                     ></RemoveExperience>
                 </div>
-                {isFormExpanded && 
-                <div className="dropdownTabs" key={dataKey} >
-                    <FormInput fieldID='role' fieldCaption='Role' type='text' placeholder={'Role'} handleInputChanges={handleInputChanges} value={roleInputDefaultValue} />
-                    <FormInput fieldID='company' fieldCaption='Company' type='text' placeholder='Company/Employer' handleInputChanges={handleInputChanges} value={companyInputDefaultValue} />
-                    <FormInput fieldID='city' fieldCaption='City' type='text' placeholder='Location' handleInputChanges={handleInputChanges} value={cityInputDefaultValue} />
-                    <FormInput fieldID='startDate' fieldCaption='Start Date' type='text' placeholder='Start Date' handleInputChanges={handleInputChanges} value={stardDateInputDefaultValue} />
-                    <FormInput fieldID='endDate' fieldCaption='End Date' type='text' placeholder='End Date' handleInputChanges={handleInputChanges} value={endDateInputDefaultValue} />
-                    <FormInput fieldID='description' fieldCaption='Description' type='text' handleInputChanges={handleInputChanges} placeholder="A brief description of your responsability" value={descriptionInputDefaultValue} />
-                </div>}
+                {workExperiencesDropdownTabs}
                 
             </div>
         )
     }
     else if (topic === 'Education') {
+        const educationDropdownTabs= <div className={'dropdownTabs'} style={displayStyle} key={dataKey}>
+            <FormInput fieldID='degree' handleInputChanges={handleInputChanges} fieldCaption='Degree' type='text' placeholder="Master's Degree" value={degreeInputDefaultValue} />
+            <FormInput fieldID='title' handleInputChanges={handleInputChanges} fieldCaption='Title' type='text' placeholder='Software Engineering' value={titleInputDefaultValue} />
+            <FormInput fieldID='school' handleInputChanges={handleInputChanges} fieldCaption='School' type='text' placeholder='Stanford' value={schoolInputDefaultValue} />
+            <FormInput fieldID='city' handleInputChanges={handleInputChanges} fieldCaption='City' type='text' placeholder='San Francisco' value={schoolInputDefaultValue} />
+            <FormInput fieldID='startDate' handleInputChanges={handleInputChanges} fieldCaption='Start Date' type='text' placeholder='2024-02' value={stardDateInputDefaultValue} />
+            <FormInput fieldID='endDate' handleInputChanges={handleInputChanges} fieldCaption='End Date' type='text' placeholder='Present' value={endDateInputDefaultValue} />
+        </div>
         return (
             <div className="DropdownMenu" >
             <div className="dropdownHeader" onClick={expandCollapseForm}>
@@ -131,15 +146,7 @@ export function DropdownMenu({updatePreviewState, topic, dataKey, triggerRerende
                     updatePreviewState={updatePreviewState}>
                 </RemoveExperience>
             </div>
-            {isFormExpanded && 
-            <div className="dropdownTabs" key={dataKey}>
-                <FormInput fieldID='degree' handleInputChanges={handleInputChanges} fieldCaption='Degree' type='text' placeholder="Master's Degree" value={degreeInputDefaultValue} />
-                <FormInput fieldID='title' handleInputChanges={handleInputChanges} fieldCaption='Title' type='text' placeholder='Software Engineering' value={titleInputDefaultValue} />
-                <FormInput fieldID='school' handleInputChanges={handleInputChanges} fieldCaption='School' type='text' placeholder='Stanford' value={schoolInputDefaultValue} />
-                <FormInput fieldID='city' handleInputChanges={handleInputChanges} fieldCaption='City' type='text' placeholder='San Francisco' value={schoolInputDefaultValue} />
-                <FormInput fieldID='startDate' handleInputChanges={handleInputChanges} fieldCaption='Start Date' type='text' placeholder='2024-02' value={stardDateInputDefaultValue} />
-                <FormInput fieldID='endDate' handleInputChanges={handleInputChanges} fieldCaption='End Date' type='text' placeholder='Present' value={endDateInputDefaultValue} />
-            </div>}
+            {educationDropdownTabs}
         </div>
         )
     }

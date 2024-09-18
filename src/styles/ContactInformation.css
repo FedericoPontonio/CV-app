@@ -10,3 +10,21 @@
     grid-column: 1/-1;
     min-width:90%;
 }
+#imgContactInformation{
+  margin-top: 5%;
+  width: 50%;
+  border-radius: 20px;
+  max-width: 600px;
+}
+
+@media (max-width: 820px) {
+    .ContactInformations{
+      grid-template-columns: 1fr;
+      align-items: center;
+      justify-items: center;
+      width: 100%;
+    }
+    .ContactInformations>div{
+      width: 100%;
+    }
+  }

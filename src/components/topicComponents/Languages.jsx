@@ -5,7 +5,7 @@ export default function Languages({updatePreviewState}) {
 
     return(
         <div className='Languages'>
-            <h2>Languages</h2>
+            <img src='../../../images/languages.jpg' alt='languages'></img>
             <SingleRowComponent  updatePreviewState={updatePreviewState} topic={'Languages'}/>
             {/* <AddSkill handleAddExperience={''}/> */}
         </div>

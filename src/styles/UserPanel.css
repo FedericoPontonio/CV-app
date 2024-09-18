@@ -9,7 +9,6 @@
     overflow-x: auto; /* Hide horizontal overflow */
     overflow-y: auto;   /* Allow vertical scrolling if needed */
 }
-
 .Skills,.Languages,.Hobbies{
     overflow: auto;
     margin-bottom: 30px;
@@ -23,4 +22,31 @@
 }
 .AddExperience:hover {
     background-color: rgb(114, 238, 114);
+}
+
+.DownloadCv {
+    display: flex;
+    flex-grow: 2;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.DownloadCv>img {
+    width: 50%;
+    margin-bottom: 3%;
+}
+.DownloadCv>button{
+    background-color: #f0f8ff; /* Light blue background for a soft touch */
+    color: #333; /* Dark text for good contrast */
+    border: 2px solid #ccc; /* Subtle border */
+    padding: 10px 20px; /* Padding for a better click area */
+    font-size: 16px; /* Readable text size */
+    font-weight: bold; /* Make the text a bit bolder */
+    border-radius: 5px; /* Rounded corners for a modern look */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+}
+.DownloadCv>button:hover{
+    background-color: #e6f0fa; /* Slightly darker on hover for interaction feedback */
+    color: #205081; /* Change text color for emphasis */
 }
