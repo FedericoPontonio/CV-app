@@ -10,7 +10,7 @@ export default function CvClause() {
     return (
     <div className="CvClause">
         <label htmlFor='cvClause'>CV Clause:</label>
-        <img src='../../../images/cvClause.jpg' alt='cv Clause'></img>
+        <img src='/images/cvClause.jpg' alt='cv Clause'></img>
         <textarea id="cvClause"
         name="cvClause"
         rows={10}

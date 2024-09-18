@@ -12,7 +12,7 @@ export default function ContactInformations({updatePreviewState}) {
     }
     return (
         <div className="contactInfoParent" style={{display:'flex', flexDirection:'column', alignItems:'center',}}>
-            <img id="imgContactInformation" src="../../../images/personalInfo.jpg" alt="personal information"></img>
+            <img id="imgContactInformation" src="/personalInfo.jpg" alt="personal information"></img>
             <div className="ContactInformations">
             <FormInput fieldID='address' fieldCaption='Address' type='text' value={contactData.address} handleInputChanges={handleInputChanges} />
             <FormInput fieldID='fName' fieldCaption='First Name' type='text' value={contactData.fName} handleInputChanges={handleInputChanges} />
