@@ -31,6 +31,9 @@
     align-items: center;
     justify-content: center;
 }
+.DownloadCv>h2{
+    margin-left: 0px;
+}
 .DownloadCv>img {
     width: 50%;
     margin-bottom: 3%;
