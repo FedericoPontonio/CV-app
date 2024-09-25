@@ -1,11 +1,18 @@
 import "../../styles/CvClause.css";
 import { updateStoredData } from "../../data";
 
-export default function CvClause() {
-    const dataRoot = JSON.parse(localStorage.getItem('CVDataJson'));
+export default function CvClause({updatePreviewState}) {
+
+    function getLatestDataRoot() {
+        return JSON.parse(localStorage.getItem('CVDataJson'));
+    };
+
+    
     function handleChanges(value) {
+        const dataRoot = getLatestDataRoot();
         dataRoot.cvClause = value;
         updateStoredData(dataRoot);
+        updatePreviewState();
     }
     return (
     <div className="CvClause">
@@ -15,7 +22,7 @@ export default function CvClause() {
         name="cvClause"
         rows={10}
         cols={40}
-        defaultValue={dataRoot.cvClause}
+        defaultValue={getLatestDataRoot().cvClause}
         onChange={(e)=>{handleChanges(e.target.value)}}>
         </textarea>
     </div>

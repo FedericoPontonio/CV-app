@@ -47,7 +47,7 @@ export default function UserPanel({updatePreviewState}) {
             case 'Education':
                 return <Education updatePreviewState={updatePreviewState}/>;
             case 'Cv Clause':
-                return <CvClause />;
+                return <CvClause updatePreviewState={updatePreviewState} />;
             case 'Skills':
                 return <Skills updatePreviewState={updatePreviewState} />;
             case 'Languages':
