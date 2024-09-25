@@ -25,12 +25,12 @@ export const dataRoot = {
         },
         {
             key: crypto.randomUUID(),
-            role: 'Bidello',
-            company: 'Achille Mapelli',
+            role: 'Construction Worker',
+            company: 'Constructions s.r.l.',
             city: 'Monza',
             startDate: '2004-02',
-            endDate: '2024-02',
-            description: "Mi occupavo di pulire i gabinetti e i banchi.",
+            endDate: '2024-03',
+            description: "As a Construction worker, I played a key role in building houses.",
         }
     ],
     education : [
@@ -102,7 +102,7 @@ export const dataRoot = {
         },
         {
             key: crypto.randomUUID(),
-            value: 'Cleaning houses',
+            value: 'Cooking',
         },
     ],
     cvClause: "I hereby give consent for my personal data included in my application to be processed for the purposes of the recruitment process under the European Parliament's and Council of the European Union Regulation on the Protection of Natural Persons as of 27 April 2016, with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC.",
