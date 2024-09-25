@@ -5,20 +5,26 @@ import { useState } from "react";
 import ButtonRemoveSingleRow from "./ButtonRemoveSingleRow";
 import "../styles/SingleRowComponent.css"
 
-const dataRoot = JSON.parse(localStorage.getItem('CVDataJson'));//function maybe better
+
 
 
 export function SingleRowComponent({topic, updatePreviewState}) {
-    
+
+    function getLatestDataRoot() {
+        return JSON.parse(localStorage.getItem('CVDataJson'));
+    };
+
     function relevantData() {
+        const latestDataRoot = getLatestDataRoot();
+
         if (topic === 'Skills') {//repetition
-            return dataRoot.skills
+            return latestDataRoot.skills
         }
         else if (topic === 'Languages') {//repetition
-            return dataRoot.languages
+            return latestDataRoot.languages
         }
         else if (topic === 'Hobbies') {//repetition
-            return dataRoot.hobbies
+            return latestDataRoot.hobbies
         }
     };
 
@@ -46,51 +52,56 @@ export function SingleRowComponent({topic, updatePreviewState}) {
     
     //update data
     function handleAddSingleRowComponent() {
+        const latestDataRoot = getLatestDataRoot();
         if (topic === 'Skills') {//repetition
-            dataRoot.skills= [...relevantData(), SingleLinerComponentConstructor(topic)]
+            latestDataRoot.skills= [...relevantData(), SingleLinerComponentConstructor(topic)]
         }
         else if (topic === 'Languages') {//repetition
-            dataRoot.languages= [...relevantData(), SingleLinerComponentConstructor(topic)]
+            latestDataRoot.languages= [...relevantData(), SingleLinerComponentConstructor(topic)]
         }
         else if (topic === 'Hobbies') {//repetition
-            dataRoot.hobbies= [...relevantData(), SingleLinerComponentConstructor(topic)]
+            latestDataRoot.hobbies= [...relevantData(), SingleLinerComponentConstructor(topic)]
         }
-        updateStoredData(dataRoot)
+        updateStoredData(latestDataRoot)
         setState(collectionOfSingleRower())
         updatePreviewState();
     };
     function handleInputChanges(inputId, eventTargetValue) {
+        const latestDataRoot = getLatestDataRoot();
+
         for(let i=0;i<relevantData().length;i++) {
             if (relevantData()[i].key === inputId) {
                 if (topic === 'Skills') {//repetition
-                    dataRoot.skills[i].value= eventTargetValue;
+                    latestDataRoot.skills[i].value= eventTargetValue;
                 }
                 else if (topic === 'Languages') {//repetition
-                    dataRoot.languages[i].value= eventTargetValue;
+                    latestDataRoot.languages[i].value= eventTargetValue;
                 }
                 else if (topic === 'Hobbies') {//repetition
-                    dataRoot.hobbies[i].value= eventTargetValue;
+                    latestDataRoot.hobbies[i].value= eventTargetValue;
                 }
             }
         }
-        updateStoredData(dataRoot);
+        updateStoredData(latestDataRoot);
         updatePreviewState();
     };
     function handleRemoveSingleRow(keyId) {
+        const latestDataRoot = getLatestDataRoot();
+
         for(let i=0;i<relevantData().length;i++) {
             if (relevantData()[i].key === keyId) {
                 if (topic === 'Skills') {//repetition
-                    dataRoot.skills.splice([i], 1);
+                    latestDataRoot.skills.splice([i], 1);
                 }
                 else if (topic === 'Languages') {//repetition
-                    dataRoot.languages.splice([i], 1);
+                    latestDataRoot.languages.splice([i], 1);
                 }
                 else if (topic === 'Hobbies') {//repetition
-                    dataRoot.hobbies.splice([i], 1);
+                    latestDataRoot.hobbies.splice([i], 1);
                 }
             }
         }
-        updateStoredData(dataRoot);
+        updateStoredData(latestDataRoot);
         setState(collectionOfSingleRower());
         updatePreviewState();
     }
