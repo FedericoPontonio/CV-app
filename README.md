@@ -13,3 +13,6 @@ Technologies Used
 - React: Utilizes React for efficient UI rendering and state management.
 - CSS: Styled with CSS for a responsive and attractive layout.
 - LocalStorage: Uses LocalStorage to save and retrieve user data during sessions.
+
+# Link to the App:
+# https://cv-application-fefe.netlify.app
